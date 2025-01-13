@@ -1,0 +1,81 @@
+body{
+  background-color: rgba(47, 16, 244, 0.847);
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ;
+  justify-content: center;
+}
+h1{
+  font-size: 4rem;
+  color: beige;
+  margin: 50px;
+}
+.to-do-list{
+  text-align: center;
+}
+button{
+  font-size: 1.4rem;
+  font-weight: 300;
+  padding: 8px 13px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: rgb(221, 216, 216);
+}
+input[type="text"]{
+  font-size: 1.4rem;
+  padding: 7px;
+  border-radius: 5px;
+  margin-right: 5px;
+  margin-bottom: 15px;
+  border: 1px solid hsl(0, 2%, 77%);
+  background-color: beige;
+  color: rgba(67, 67, 67, 0.847);
+}
+ol{
+  padding: 0;
+  margin:0 auto;
+  width: 75%;
+}
+li{
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: rgb(61, 60, 60);
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid rgb(16, 15, 15) ;
+  border-radius: 5px;
+  background-color: rgb(195, 193, 192);
+  display: flex;
+  align-items: center;
+}
+.text{
+  flex: 1;
+}
+.complete-button,.delete-button, .move-button{
+  padding: 8px, 12px;
+  font-size: 1.4rem;
+  margin-left: 10px;
+}
+.add-button{
+  background-color:hsl(120, 33%, 37%) ;
+}
+.add-button:hover{
+  background-color:hsl(120, 33%, 47%) ;
+}
+.complete-button{
+  background-color: hsl(120, 33%, 37%);
+}
+.complete-button:hover{
+  background-color: hsl(120, 33%, 47%);
+}
+.delete-button{
+  background-color:hsl(0, 56%, 44%) ;
+}
+.delete-button:hover{
+  background-color:hsl(0, 56%, 54%) ;
+}
+.move-button{
+  background-color:hsl(195, 85%, 47%) ;
+}
+.move-button:hover{
+  background-color:hsl(195, 85%, 57%) ;
+}
