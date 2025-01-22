@@ -77,14 +77,15 @@ function ToDoList() {
                             <button className="delete-button" onClick={() => deleteTask(index)}>Delete</button>
                             {!task.completed && (
                                 <>
-                                    <button className="move-button" onClick={() => moveTaskUp(index)}>⬆️</button>
-                                    <button className="move-button" onClick={() => moveTaskDown(index)}>⬇️</button>
+                                    <button className="move-button" onClick={() => moveTaskUp(index)}>⬆</button>
+                                    <button className="move-button" onClick={() => moveTaskDown(index)}>⬇</button>
                                 </>
                             )}
                         </li>
                     )}
                 </ol>
             </div>
+        </>
     );
 }
 
