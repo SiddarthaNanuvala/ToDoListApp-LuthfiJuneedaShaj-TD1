@@ -9,15 +9,3 @@ Currently, two official plugins are available:
 
 
 
-## Task List Improvements
-
-### Completed Tasks Positioning
-
-In this update, we have made the following improvements to the task list behavior:
-
-- **Completed tasks remain at the top of the list**: Completed tasks will always stay at the top, even when unfinished tasks are moved up using the "Move Up" functionality.
-- **Unfinished tasks movement behavior**: The "Move Up" button can be used on unfinished tasks, but it will not affect the order of completed tasks.
-
-### Documentation Update
-
-The project documentation has been updated to reflect these changes in task management and provide clearer instructions on task handling. This ensures that users and developers understand the intended behavior for sorting tasks and how the system behaves when interacting with completed or unfinished tasks.
