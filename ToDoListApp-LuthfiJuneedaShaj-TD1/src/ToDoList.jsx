@@ -15,16 +15,18 @@ function ToDoList() {
 
     function addTask() {
         if (newTask.trim() !== "") {
-            setTasks(t => [...t, { text: newTask, completed: false }]);
+            setTasks((t) => [...t, { text: newTask, completed: false }]);
             setNewTask("");
         }
     }
 
     function completeTask(index) {
         const updatedTasks = [...tasks];
-        const [completedTask] = updatedTasks.splice(index, 1);
-        completedTask.completed = true; // Mark the task as completed
-        setTasks([completedTask, ...updatedTasks]); // Move to the top
+        updatedTasks[index].completed = true;
+        setTasks([
+            ...updatedTasks.filter((task) => task.completed),
+            ...updatedTasks.filter((task) => !task.completed),
+        ]);
     }
 
     function deleteTask(index) {
@@ -33,20 +35,30 @@ function ToDoList() {
     }
 
     function moveTaskUp(index) {
-        if (index > 0) {
-            const updatedTasks = [...tasks];
-            [updatedTasks[index], updatedTasks[index - 1]] = 
-            [updatedTasks[index - 1], updatedTasks[index]];
-            setTasks(updatedTasks);
+        const completedTasks = tasks.filter((task) => task.completed);
+        const incompleteTasks = tasks.filter((task) => !task.completed);
+
+        if (index >= completedTasks.length && index > completedTasks.length) {
+            const adjustedIndex = index - completedTasks.length;
+            if (adjustedIndex > 0) {
+                [incompleteTasks[adjustedIndex], incompleteTasks[adjustedIndex - 1]] =
+                [incompleteTasks[adjustedIndex - 1], incompleteTasks[adjustedIndex]];
+                setTasks([...completedTasks, ...incompleteTasks]);
+            }
         }
     }
 
     function moveTaskDown(index) {
-        if (index < tasks.length - 1) {
-            const updatedTasks = [...tasks];
-            [updatedTasks[index], updatedTasks[index + 1]] = 
-            [updatedTasks[index + 1], updatedTasks[index]];
-            setTasks(updatedTasks);
+        const completedTasks = tasks.filter((task) => task.completed);
+        const incompleteTasks = tasks.filter((task) => !task.completed);
+
+        if (index >= completedTasks.length && index < tasks.length - 1) {
+            const adjustedIndex = index - completedTasks.length;
+            if (adjustedIndex < incompleteTasks.length - 1) {
+                [incompleteTasks[adjustedIndex], incompleteTasks[adjustedIndex + 1]] =
+                [incompleteTasks[adjustedIndex + 1], incompleteTasks[adjustedIndex]];
+                setTasks([...completedTasks, ...incompleteTasks]);
+            }
         }
     }
 
@@ -67,7 +79,9 @@ function ToDoList() {
                 <ol>
                     {tasks.map((task, index) => 
                         <li key={index}>
-                            <span className="text">{task.text}</span>
+                            <span className={text ${task.completed ? "completed" : ""}}>
+                                {task.text}
+                            </span>
                             <button 
                                 className="complete-button" 
                                 onClick={() => completeTask(index)}
